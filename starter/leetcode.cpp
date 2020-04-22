@@ -24,16 +24,16 @@ string to_string(A v) {
   return res;
 }
 
-void debug_out() { cerr << endl; }
+void debug_out() { cout << endl; }
 
 template <typename Head, typename... Tail>
 void debug_out(Head H, Tail... T) {
-  cerr << " " << to_string(H);
+  cout << " " << to_string(H);
   debug_out(T...);
 }
 
 #ifndef ONLINE_JUDGE
-#define dbg(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
+#define dbg(...) cout << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
 #else
 #define dbg(...) 42
 #endif
@@ -43,9 +43,9 @@ void debug_out(Head H, Tail... T) {
 using ll = long long;
 using P = pair<int, int>;
 using T = tuple<int, int, int>;
-const int INF = 0x3f3f3f3f;
-const ll LLINF = 0x3f3f3f3f3f3f3f3f;
-const int MOD = 1e9 + 7;
+constexpr int INF = 0x3f3f3f3f;
+constexpr ll LLINF = 0x3f3f3f3f3f3f3f3f;
+constexpr int MOD = 1e9 + 7;
 
 int dx[4] = {-1, 1, 0, 0};
 int dy[4] = {0, 0, -1, 1};

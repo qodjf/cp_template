@@ -50,9 +50,9 @@ void debug_out(Head H, Tail... T) {
 using ll = long long;
 using P = pair<int, int>;
 using T = tuple<int, int, int>;
-const int INF = 0x3f3f3f3f;
-const ll LLINF = 0x3f3f3f3f3f3f3f3f;
-const ll MOD = 1e9 + 7;
+constexpr int INF = 0x3f3f3f3f;
+constexpr ll LLINF = 0x3f3f3f3f3f3f3f3f;
+constexpr ll MOD = 1e9 + 7;
 
 int dx[4] = {-1, 1, 0, 0};
 int dy[4] = {0, 0, -1, 1};
@@ -60,6 +60,9 @@ int dy[4] = {0, 0, -1, 1};
 void solve() {}
 
 int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+
   int T;
   scanf("%d", &T);
   while (T--) {
