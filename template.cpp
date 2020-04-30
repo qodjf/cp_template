@@ -45,6 +45,24 @@ void debug_out(Head H, Tail... T) {
 #define dbg(...) 42
 #endif
 
+template <class T>
+inline bool chmax(T &a, T b) {
+  if (a < b) {
+    a = b;
+    return true;
+  }
+  return false;
+}
+
+template <class T>
+inline bool chmin(T &a, T b) {
+  if (a > b) {
+    a = b;
+    return true;
+  }
+  return false;
+}
+
 #define mst(x, a) memset(x, a, sizeof(x))
 
 using ll = long long;
