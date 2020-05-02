@@ -41,14 +41,35 @@ void debug_out(Head H, Tail... T) {
 #define dbg(...) 42
 #endif
 
+template <class T>
+inline bool chmax(T &a, T b) {
+  if (a < b) {
+    a = b;
+    return true;
+  }
+  return false;
+}
+
+template <class T>
+inline bool chmin(T &a, T b) {
+  if (a > b) {
+    a = b;
+    return true;
+  }
+  return false;
+}
+
 #define mst(x, a) memset(x, a, sizeof(x))
+#define rep(i, begin, end)                            \
+  for (__typeof(end) i = (begin) - ((begin) > (end)); \
+       i != (end) - ((begin) > (end)); i += 1 - 2 * ((begin) > (end)))
 
 using ll = long long;
 using P = pair<int, int>;
 using T = tuple<int, int, int>;
 constexpr int INF = 0x3f3f3f3f;
 constexpr ll LLINF = 0x3f3f3f3f3f3f3f3f;
-constexpr int MOD = 1e9 + 7;
+constexpr ll MOD = 1e9 + 7;
 
 int dx[4] = {-1, 1, 0, 0};
 int dy[4] = {0, 0, -1, 1};
