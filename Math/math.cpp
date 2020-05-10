@@ -2,14 +2,20 @@ using ll = long long;
 
 const int MOD = 1e9 + 7;
 
-ll mul(ll a, ll b) { return a * b % MOD; }
+inline ll mul(ll a, ll b) { return a * b % MOD; }
 
-ll add(ll a, ll b) { return (a + b) % MOD; }
+inline ll add(ll a, ll b) { return (a + b) % MOD; }
 
-ll sub(ll a, ll b) { return (a - b + MOD) % MOD; }
+inline ll sub(ll a, ll b) {
+  int x = (a - b) % MOD;
+  return x < 0 ? x + MOD : x;
+}
+
+ll my_inv(ll);
 
 ll my_pow(ll a, ll b) {
-  ll r = 1;
+  if (b < 0) a = my_inv(a), b = -b;
+  ll r = 1 % MOD;
   while (b) {
     if (b & 1) r = mul(r, a);
     a = mul(a, a);
