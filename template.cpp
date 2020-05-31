@@ -69,7 +69,7 @@ int main() {
   cin.tie(nullptr);
 
   int T;
-  scanf("%d", &T);
+  cin >> T;
   while (T--) {
     solve();
   }
