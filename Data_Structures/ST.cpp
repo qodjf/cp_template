@@ -12,12 +12,13 @@ void init() {
   }
 }
 
+template <typename T, T (*op)(const T&, const T&)>
 class SparseTable {
  public:
-  SparseTable(const vector<int>& a) {
+  SparseTable(const vector<T>& a) {
     C = a.size();
     R = logn[C] + 1;
-    arr = new int[R * C];
+    arr = new T[R * C];
 
     int n = a.size();
     for (int i = 0; i < n; i++) {
@@ -26,31 +27,33 @@ class SparseTable {
     for (int k = 1; (1 << k) <= n; k++) {
       for (int i = 0; i + (1 << k) <= n; i++) {
         // [i, i + (1 << k)]
-        f(k, i) = min(f(k - 1, i), f(k - 1, i + (1 << (k - 1))));
+        f(k, i) = op(f(k - 1, i), f(k - 1, i + (1 << (k - 1))));
       }
     }
   }
 
-  // min val of [l, r]
+  // op val of [l, r]
   int query(int l, int r) const {
     int s = logn[r - l + 1];
-    return min(f(s, l), f(s, r - (1 << s) + 1));
+    return op(f(s, l), f(s, r - (1 << s) + 1));
   }
 
   ~SparseTable() { delete arr; }
 
  private:
-  int* arr;
+  T* arr;
   int R = 0, C = 0;
-  inline int& f(int i, int j) const { return arr[i * C + j]; }
+  inline T& f(int i, int j) const { return arr[i * C + j]; }
 };
 }  // namespace ST
+
+int my_min(const int& a, const int& b) { return min(a, b); }
 
 int main() {
   ST::init();
   vector<int> a = {5, 3, 2, 1, 7};
 
-  ST::SparseTable st(a);
+  ST::SparseTable<int, my_min> st(a);
   cout << st.query(0, 2) << endl;
   cout << st.query(2, 4) << endl;
 }
