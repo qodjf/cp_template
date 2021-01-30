@@ -31,10 +31,13 @@ const int MAXK = 2e5 + 5;
 int fac[MAXK], inv_fac[MAXK];
 
 void init() {
-  fac[0] = inv_fac[0] = 1;
+  fac[0] = 1;
   for (int i = 1; i < MAXK; ++i) {
     fac[i] = mul(fac[i - 1], i);
-    inv_fac[i] = my_inv(fac[i]);
+  }
+  inv_fac[MAXK - 1] = my_inv(fac[MAXK - 1]);
+  for (int i = MAXK - 2; i >= 0; i--) {
+    inv_fac[i] = mul(inv_fac[i + 1], i + 1);
   }
 }
 
