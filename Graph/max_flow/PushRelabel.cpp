@@ -70,6 +70,7 @@ struct PushRelabel {
     // prevent add t to hs
     ec[t] = 1;
     for (auto& e : g[s]) {
+      if (H[e.to] == INF) continue;
       if (!ec[e.to] && e.c) {
         chmax(hi, H[e.to]);
       }
